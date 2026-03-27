@@ -62,17 +62,19 @@ To force the syntax on any file:
 
 | Element | Highlight Group | Default Color |
 |---------|----------------|---------------|
-| Timestamps | `Number` | Magenta/Yellow |
-| Hostnames | `Identifier` | Cyan |
-| Source (`THOR:`) | `Keyword` | Yellow |
-| Alert / Error | `ErrorMsg` | Red (bold) |
-| Warning | `WarningMsg` | Orange/Yellow |
-| Notice | `Function` | Green/Blue |
-| Info | `Comment` | Gray |
-| Field keys | `Type` | Green |
-| Hashes | `Special` | Magenta |
-| IP addresses | `Constant` | Red/Magenta |
-| Scan IDs | `Constant` | Red/Magenta |
-| Numbers | `Number` | Magenta/Yellow |
+| Timestamps | `thorTimestamp` → `Number` | Magenta/Yellow |
+| Hostnames | `thorHost` → `Identifier` | Cyan |
+| Hostname/IP | `thorHost` + `thorHostIP` → `Constant` | Cyan + Red/Magenta |
+| Source (`THOR:`) | `thorSource` → `Keyword` | Yellow |
+| Alert | `thorLevelAlert` | 🔴 Red (bold) |
+| Error | `thorLevelError` | 🟣 Purple |
+| Warning | `thorLevelWarning` | 🟡 Yellow |
+| Notice | `thorLevelNotice` | 🔵 Blue |
+| Info | `thorLevelInfo` | 🟢 Green |
+| Field keys | `thorFieldKey` → `Type` | Green |
+| Hashes | `thorHash*` → `Special` | Magenta |
+| IP addresses | `thorIPAddress` → `Constant` | Red/Magenta |
+| Scan IDs | `thorScanID` → `Constant` | Red/Magenta |
+| Numbers | `thorNumber` → `Number` | Magenta/Yellow |
 
-Colors depend on your colorscheme. The syntax uses standard Vim highlight groups for maximum compatibility.
+Colors adapt to your colorscheme. The syntax uses standard Vim highlight groups with explicit fallback colors for log levels.
