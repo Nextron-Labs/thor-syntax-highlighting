@@ -11,6 +11,8 @@ Syntax highlighting for [THOR APT Scanner](https://www.nextron-systems.com/thor/
 | [Sublime Text](sublime/) | `sublime/` | ✅ Ready |
 | [Visual Studio Code](vscode/) | `vscode/` | ✅ Ready |
 | [Vim / Neovim](vim/) | `vim/` | ✅ Ready |
+| [Emacs](emacs/) | `emacs/` | ✅ Ready |
+| [JetBrains IDEs](jetbrains/) | `jetbrains/` | ✅ Ready |
 
 Each editor directory contains its own README with installation instructions.
 

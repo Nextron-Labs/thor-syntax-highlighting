@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>name</key>
+	<string>THOR Log</string>
+	<key>uuid</key>
+	<string>b8f2e4a0-7d3c-4e1f-9a5b-2c8d6f0e1a3b</string>
+	<key>description</key>
+	<string>Syntax highlighting for THOR APT Scanner text log files</string>
+	<key>contactName</key>
+	<string>Nextron Systems GmbH</string>
+	<key>contactEmailRot13</key>
+	<string>fhccbeg@arkgeba-flfgrzf.pbz</string>
+</dict>
+</plist>
