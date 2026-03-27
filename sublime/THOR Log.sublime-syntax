@@ -1,0 +1,239 @@
+%YAML 1.2
+---
+# THOR APT Scanner - Text Log Syntax Highlighting for Sublime Text
+# https://github.com/NextronSystems/thor-syntax-highlighting
+#
+# Field names derived from https://github.com/NextronSystems/jsonlog
+name: THOR Log
+scope: text.log.thor
+version: 2
+
+file_extensions:
+  - thor.log
+  - thor.txt
+
+# Match filenames like: hostname_thor_2024-03-20_0800.txt
+# Users can also associate manually via View > Syntax > THOR Log
+first_line_match: |-
+  (?x)
+  # Syslog-style THOR line
+  ^(?:\w{3}\s+\d{1,2}\s+\d{2}:\d{2}:\d{2}|\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2})
+  \s+\S+\s+THOR(?:_UTIL)?:\s+(?:Alert|Warning|Notice|Info|Error):
+
+variables:
+  # Base field names from THOR's jsonlog textlog tags (uppercased).
+  # Source: https://github.com/NextronSystems/jsonlog
+  # These may appear with a _N numeric suffix (e.g. REASON_1) or a
+  # relation prefix (e.g. PARENT_FILE) in the actual log output.
+  field_names: |-
+    (?x:
+      ACCESS_COUNT|ACCESSED|ACTIVE|ACTIVE_FEATURES|ACTIVE_MODULES|ADDRESS|
+      AFFECTED|ALLOW|APP_INFO|APPNAME|APPPATH|ARCH|ARGUMENTS|
+      AUTHENTICATED_USER_NAME|AUTHOR|AUTH_PACKAGE|AUTORUN_TYPE|
+      BACKGROUND_BYTES_READ|BACKGROUND_BYTES_WRITTEN|
+      BACKGROUND_NUM_READ_OPERATIONS|BACKGROUND_NUM_WRITE_OPERATIONS|
+      BAD_PASSWORD_COUNT|BEACON|BEACON_LENGTH|BEACON_OFFSET|
+      BIRTH_VOLUME_ID|BLOCK_START|BUILD|BUILD_NUMBER|BUILD_SEQUENCE_ID|
+      C2|CALLBACK_INTERVAL|CAPTION|CATEGORY|CERTIFICATE_NAME|CHANGED|
+      CHECKSUM|CHUNK_END|CHUNK_OFFSET|CIPHER_PARAMETERS|CLIENT|
+      CLIENT_NAME|CLIENT_TYPE|COM_HANDLER|COMMAND|COMMAND_LINE|COMMENT|
+      COMPANY|CONNECTION_COUNT|CONNECTIONS|CONTENT|COUNT|CPU_COUNT|
+      CPU_LIMIT|CREATED|DATA|DATE|DATE_ACCESS|DEAD|DELETED|DELETION_TIME|
+      DESC|DESCRIPTION|DIR|DOMAIN|DURATION|
+      ELEMENT|ELEMENT1|ELEMENT2|ELEVATED|ENABLED|END_TIME|ENTRIES|ENTRY|
+      ENTRY_ID|ERROR|ERRORS|EVENT|EVENT_CHANNEL|EVENT_COMPUTER|
+      EVENTCONSUMER|EVENTCONSUMERNAME|EVENTFILTER|EVENTFILTERNAME|EVENT_ID|
+      EVENT_LEVEL|EVENTNAME|EVENT_TIME|EVENTTYPE|EXCLUSION|EXE|EXEC_FLAG|
+      EXECUTABLE|EXECUTION_COUNT|EXISTS|EXPIRES|EXTENSION|EXTRAS|
+      FACE_TIME|FAILURE_COMMAND|FALSEPOSITIVES|FAULT_IN_MODULE|FILE|
+      FILENAME|FILE_SIZE_LIMIT|FILTERTYPE|FIRSTBYTES|FIRST_RUN|
+      FIRST_SUBMISSION|FLAGS|FOREGROUND_BYTES_READ|
+      FOREGROUND_BYTES_WRITTEN|FOREGROUND_NUM_READ_OPERATIONS|
+      FOREGROUND_NUM_WRITE_OPERATIONS|FREE_MEMORY_LIMIT|FULL_NAME|
+      GROUP|GROUPID|GUID|
+      HANDLE|HASH|HDR_MOD|HIVEFILE|HOME|HOOK|HOST|HOSTNAME|
+      IAT_HOOKED|ID|IDLE|IGNORED|IMAGE|IMPHASH|IMPLANTED|INBOUND|
+      INCLUDED_IN_KERNEL|INJECTION_PROCESS|IN_PROC_MODULES|INSERT_DATE|
+      INSTALLED_ON|IN_SYS_MODULE|INTERFACE|INTERNAL_NAME|IN_VMALLOCINFO|
+      IP|IP_ADDRESS|IS_ADMIN|
+      KERNEL_NAME|KERNEL_VERSION|KEY|KEY_NAME|KEYWORD|
+      LANGUAGE|LAST_ACCESS|LAST_HOTFIX|LAST_LOGON|LAST_RESULT|LAST_RUN|
+      LASTRUN|LAST_STOPPED|LAST_SUBMISSION|LAUNCH_STRING|LEGAL_COPYRIGHT|
+      LICENSE|LINE|LINK_TYPE|LIP|LISTEN_PORTS|LOAD_TIME|LOCATION|LOCKED|
+      LOGON_TIME|LOGON_TYPE|LPORT|LSA_SESSION|
+      MATCHED|MD5|MD5_BEFORE|MEMORY|MESSAGE|MFT_FILE_NAME_ACCESSED|
+      MFT_FILE_NAME_CHANGED|MFT_FILE_NAME_CREATED|MFT_FILE_NAME_MODIFIED|
+      MODEL|MODIFIED|MODULE|MUTEX|
+      NAME|NAMES|NESTED|NETBIOS_NAME|NEXTRUN|NO_EXPIRE|NUM_LOGONS|
+      NUM_OPENS|
+      OBJECT_ID|ORIGINAL_FILENAME|ORIGINAL_NAME|OS_BUILD_TIME|OTHER|
+      OTHER_DOMAINS|OWNER|
+      PAIRWISE_SWAPPED|PARAMETERS|PARENT|PARENT_COMMAND|PASS_AGE|
+      PASSWORD|PATCHED|PATH|PERMISSIONS|PE_SIEVE|PID|PINNED|PIPE|
+      PIPENAME|PIPES|PORT|PPID|PREVIOUS_ENTRIES|PRIMARY_KEY|PRIORITY|
+      PRIVILEGES|PROC|PROCESS|PRODUCT|PRODUCT_NAME|PROTOCOL|PROXY|
+      REASON|REASONS_COUNT|REF|REPLACED|REPORTTYPE|RESULT|RIP|ROLE_GUID|
+      ROLE_NAME|RPORT|RULE|RULEDATE|RULENAME|RUN_AS_GROUP|RUN_AS_USER|
+      RUN_LEVEL|
+      SCAN_ID|SCANID|SCANNER|SCHEDULE|SCORE|SERVER|SERVICE_NAME|
+      SERVICE_PACK|SERVICE_TYPE|SESSION|SHA1|SHA256|SHARE_NAME|
+      SHARE_PERMS|SHELL|SIGCLASS|SIGMA_VERSION|SIGNATURE_STATUS|
+      SIGNATURE_VALID|SIGNATURE_VERSION|SIGNED|SIGTYPE|SIZE|SKIPPED|
+      SPAWNTO|STARTED|STARTS|START_TYPE|STATUS|SUBELEMENT1|SUBELEMENT2|
+      SUBFIELD1|SUBFIELD2|SUBFIELD3|SUBFIELD4|SUBFIELD5|SUBFIELD8|
+      SUBMISSIONS|SUBOBJECT|SUBSCORE|SUBSTRUCT|SUSPICIOUS_SECTIONS|SYMBOL|
+      SYSTEM_TYPE|
+      TAG|TAGS|TARGET|TARGET_SIZE|TECHNOLOGY_LEVEL|TENANT_ID|THOR_DIR|
+      THREAD_ID|THREADS|THREAT|THREAT_NAME|TIME|TIMEOUT|TIMESTAMP|
+      TIMEZONE|TITLE|TOTAL_ACCESSES|TREE|TRIGGERS|TYPE|
+      UID|UNEXPANDED|UNIT|UNPACK_SOURCE|UNREACHABLE_FILE|UPTIME|URL|USER|
+      USER_AGENT|USERID|USER_NAME|USERNAME|USER_SID|USN_CHANGE_TIME|
+      VALUE|VALUER|VALUES|VAR|VCPUS|VERDICTS|VERSION|VIRUSTOTAL|
+      VOLUME_ID|
+      XAF_ENCODED|XAF_ENCODING_ANCHOR|XOR_KEY
+    )
+
+  # Full field pattern: optional relation prefix + base name + optional numeric suffix
+  # Examples: MODULE, REASON_1, PARENT_FILE, PARENT_MD5_2
+  field_key: |-
+    (?x:
+      (?:[A-Z][A-Z0-9]*_)?       # optional relation prefix (e.g. PARENT_)
+      {{field_names}}             # known base field name
+      (?:_\d+)?                   # optional numeric suffix (e.g. _1, _2)
+    )
+
+  # Syslog timestamp: "Mon DD HH:MM:SS" (ANSI C without year)
+  ts_syslog: '[A-Z][a-z]{2}\s+\d{1,2}\s+\d{2}:\d{2}:\d{2}'
+  # RFC3339 timestamp
+  ts_rfc3339: '\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+-]\d{2}:\d{2})?'
+
+  # MD5 / SHA1 / SHA256 hex patterns (exact length)
+  md5_hash: '[0-9a-fA-F]{32}'
+  sha1_hash: '[0-9a-fA-F]{40}'
+  sha256_hash: '[0-9a-fA-F]{64}'
+
+contexts:
+  main:
+    # Comment lines
+    - match: '^\s*#.*$'
+      scope: comment.line.thor
+
+    # THOR log line — match the full header
+    - match: '^({{ts_syslog}}|{{ts_rfc3339}})\s+'
+      captures:
+        0: meta.timestamp.thor constant.numeric.timestamp.thor
+      push: hostname
+
+    # Fallback: lines that don't match the expected format
+    - match: '^.*$'
+      scope: text.plain.thor
+
+  hostname:
+    # hostname/IP or just hostname
+    - match: '(\S+?)(?:(/)([\d.]+))?\s+'
+      captures:
+        1: entity.name.hostname.thor
+        2: punctuation.separator.thor
+        3: constant.numeric.ip-address.thor
+      set: source
+
+  source:
+    # THOR: or THOR_UTIL:
+    - match: '(THOR(?:_UTIL)?)(:\s*)'
+      captures:
+        1: entity.name.source.thor keyword.other.source.thor
+        2: punctuation.separator.thor
+      set: level
+
+  level:
+    # Alert — highest severity, red
+    - match: '(Alert)(:)\s*'
+      captures:
+        1: markup.error.thor support.type.level.alert.thor
+        2: punctuation.separator.thor
+      set: fields
+
+    # Error
+    - match: '(Error)(:)\s*'
+      captures:
+        1: markup.error.thor support.type.level.error.thor
+        2: punctuation.separator.thor
+      set: fields
+
+    # Warning
+    - match: '(Warning)(:)\s*'
+      captures:
+        1: markup.warning.thor support.type.level.warning.thor
+        2: punctuation.separator.thor
+      set: fields
+
+    # Notice
+    - match: '(Notice)(:)\s*'
+      captures:
+        1: markup.info.thor support.type.level.notice.thor
+        2: punctuation.separator.thor
+      set: fields
+
+    # Info
+    - match: '(Info)(:)\s*'
+      captures:
+        1: comment.thor support.type.level.info.thor
+        2: punctuation.separator.thor
+      set: fields
+
+  fields:
+    # End of line returns to main
+    - match: '$'
+      pop: true
+
+    # Field key followed by colon+space (lookahead for value)
+    # The value runs until the next field key or end of line.
+    - match: '({{field_key}})(:)\s'
+      captures:
+        1: entity.name.tag.field-key.thor
+        2: punctuation.separator.key-value.thor
+      push: field_value
+
+    # Anything not matching a known field is treated as a plain value
+    # (this handles the first text after level if there's no field key)
+    - match: '\S+'
+      scope: string.unquoted.value.thor
+
+  field_value:
+    # Value ends when we see the next field key (lookahead) or end of line
+    - match: '(?=\s{{field_key}}: )'
+      pop: true
+
+    - match: '$'
+      pop: true
+
+    # SHA256 hash (must be checked before SHA1 and MD5 due to length)
+    - match: '\b{{sha256_hash}}\b'
+      scope: constant.other.hash.sha256.thor
+
+    # SHA1 hash
+    - match: '\b{{sha1_hash}}\b'
+      scope: constant.other.hash.sha1.thor
+
+    # MD5 hash
+    - match: '\b{{md5_hash}}\b'
+      scope: constant.other.hash.md5.thor
+
+    # IP addresses
+    - match: '\b\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\b'
+      scope: constant.numeric.ip-address.thor
+
+    # Numeric scores / sizes / ports
+    - match: '\b\d+\b'
+      scope: constant.numeric.thor
+
+    # Scan IDs (S-xxxxx pattern)
+    - match: '\bS-[a-zA-Z0-9_-]+\b'
+      scope: constant.other.scan-id.thor
+
+    # Everything else in the value
+    - match: '\S+'
+      scope: string.unquoted.value.thor
+
+    # Spaces within value
+    - match: '\s+'

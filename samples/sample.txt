@@ -1,0 +1,61 @@
+# THOR APT Scanner - Text Log Format Samples
+# These samples demonstrate the various log line formats for syntax highlighting testing.
+
+# === Startup / Info messages ===
+Jan 10 09:24:20 win11-testing THOR: Info: MODULE: Startup MESSAGE: Thor Version: 10.8.0
+Jan 10 09:24:20 win11-testing THOR: Info: MODULE: Init MESSAGE: System Information HOSTNAME: win11-testing DOMAIN: WORKGROUP ARCH: x86_64 CPU_COUNT: 8 MEMORY: 17179869184
+Jan 10 09:24:21 win11-testing THOR: Info: MODULE: Init MESSAGE: Deep Scan Mode
+
+# === License info ===
+Jan 10 09:24:20 win11-testing THOR_UTIL: Info: License file found OWNER: Rick Roll TYPE: client STARTS: 2022/08/09 EXPIRES: 2023/08/09
+
+# === FileScan findings ===
+Dec  2 19:29:43 PROMETHEUS/10.0.2.4 THOR: Notice: MODULE: Filescan MESSAGE: Suspicious file found FILE: C:\Program Files (x86)\HaoZip\HaoZipExt64.dll SCORE: 54 TYPE: EXE MD5: 60873d6560b29bdb30235e05eda97539 SHA1: d312157d7c890a68eed85c5a2fd17fdfe6defa87 SHA256: a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2 OWNER: BUILTIN\Administrators SIZE: 513800 FIRSTBYTES: 4d5a90000300000004000000ffff0000b8000000 / MZ COMPANY: ACME DESC: 2345-Windows CREATED: Thu Jul 26 05:20:04 2012 MODIFIED: Thu Jul 26 05:20:04 2012 ACCESSED: Fri Sep 20 12:47:39 2013 REASON_1: Haozip_SFX / Haozip SFX Compressed Executable
+
+# === Alert with SHIMCache ===
+Jul 10 09:08:47 PROMETHEUS/10.0.2.15 THOR: Alert: MODULE: SHIMCache SCANID: S-r4GhEhEiIRg MESSAGE: Malware name found in Shim Cache Entry ENTRY: C:\Users\neo\Desktop\ncat.exe KEYWORD: \\ncat\.exe DATE: 07/29/13 05:16:04 TYPE: system HIVEFILE: None EXTRAS: N/A N/A True
+
+# === Warning ===
+Mar 15 14:22:31 SERVER01 THOR: Warning: MODULE: Init MESSAGE: No rules with DEEPSCAN tag found.
+
+# === Error ===
+Mar 15 14:23:01 SERVER01/192.168.1.100 THOR: Error: MODULE: Filescan MESSAGE: Could not access file FILE: C:\Windows\System32\config\SAM ERROR: access denied
+
+# === Process Check ===
+Jun 15 11:38:13 WORKSTATION5 THOR: Warning: MODULE: ProcessCheck MESSAGE: Suspicious process found PID: 3812 PROCESS: svchost.exe COMMAND_LINE: svchost.exe -k netsvcs -p -s Schedule PPID: 684 OWNER: NT AUTHORITY\SYSTEM
+
+# === Multiple reasons ===
+Jun 15 11:40:22 WORKSTATION5 THOR: Alert: MODULE: Filescan MESSAGE: Malware file found FILE: C:\Users\Public\payload.exe SCORE: 100 MD5: abcdef1234567890abcdef1234567890 SHA1: 1234567890abcdef1234567890abcdef12345678 SHA256: abcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890 SIZE: 45056 TYPE: EXE FIRSTBYTES: 4d5a90000300000004000000ffff0000b8000000 / MZ CREATED: Mon Jun 14 23:15:00 2021 MODIFIED: Mon Jun 14 23:15:00 2021 REASON_1: MAL_Cobalt_Strike_Beacon / Detects Cobalt Strike beacon SUBSCORE_1: 75 SIGTYPE_1: internal TAGS_1: APT, MAL, HKTL REASON_2: SUSP_PE_Anomaly_Size / Detects PE with suspicious size SUBSCORE_2: 40 SIGTYPE_2: internal
+
+# === DeepDive / Memory scan ===
+Jun 15 11:38:13 WORKSTATION5 THOR: Alert: MODULE: DeepDive MESSAGE: YARA rule match in process memory TARGET: /mnt/mem-dumps/procs/3812.dmp NAME: SUSP_Encoded_UA_Mozilla SCORE: 50 DESCRIPTION: Detects encoded keyword - User-Agent: Mozilla/ SIGTYPE: internal TAGS: SUSP, T1027 MATCHING_STRINGS: Str1: "VzZXItQWdlbnQ6IE1vemlsbGEv" in "dDBRMD0NClVzZXItQWdlbnQ6IE1vemlsbGEvNS4wIChjb2" at 0x1672eacc MODIFIED: Tue Jun 15 11:38:13 2021 CHANGED: Tue Jun 15 11:38:13 2021 TARGET_SIZE: 610324480
+
+# === Network connection ===
+Mar 20 08:15:44 DC01/10.0.0.1 THOR: Warning: MODULE: ProcessConnections MESSAGE: Suspicious outbound connection found PID: 2048 PROCESS: rundll32.exe RIP: 185.141.25.168 RPORT: 443 LIP: 10.0.0.50 LPORT: 49832 PROTOCOL: TCP
+
+# === Registry check ===
+Mar 20 08:16:12 DC01 THOR: Notice: MODULE: Registry MESSAGE: Suspicious registry entry found KEY: HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run VALUE: C:\ProgramData\updater.exe ENTRY: Updater
+
+# === Service check ===
+Mar 20 08:17:00 DC01 THOR: Warning: MODULE: ServiceCheck MESSAGE: Suspicious service found SERVICE_NAME: WinDefUpdate COMMAND: C:\ProgramData\svc.exe START_TYPE: auto STARTED: true
+
+# === Eventlog ===
+Mar 20 08:18:30 DC01 THOR: Notice: MODULE: Logscan MESSAGE: Suspicious event found EVENT_ID: 4688 EVENT_CHANNEL: Security COMMAND_LINE: powershell.exe -enc SQBFAFgAIAAoAE4AZQB3AC0ATwBiAGoA USER: DOMAIN\admin
+
+# === Scheduled task ===
+Mar 20 08:19:15 DC01 THOR: Warning: MODULE: Scheduled MESSAGE: Suspicious scheduled task found NAME: WindowsUpdate COMMAND: C:\Windows\Temp\update.bat SCHEDULE: PT1H RUN_AS_USER: SYSTEM LAST_RUN: Mon Mar 18 02:00:00 2024
+
+# === Autoruns ===
+Mar 20 08:20:00 DC01 THOR: Notice: MODULE: Autoruns MESSAGE: Suspicious autorun entry found ENTRY: HKLM\Software\Microsoft\Windows\CurrentVersion\RunOnce LAUNCH_STRING: C:\Temp\install.exe LOCATION: Registry
+
+# === Edge cases: values containing colon-like patterns ===
+Mar 20 08:21:00 SERVER02 THOR: Notice: MODULE: Filescan MESSAGE: Suspicious file found FILE: D:\Backups\archive.zip ENTRY: D:\Backups\archive.zip|suspicious.bat FIRSTBYTES: 4045434f / @ECO TYPE: SCRIPT
+
+# === RFC3339 timestamps ===
+2024-03-20T08:22:00Z SERVER03/172.16.0.5 THOR: Info: MODULE: RuntimeWatcher MESSAGE: Current scan progress DURATION: 3600 SKIPPED: 15 ERRORS: 2
+
+# === With hostname containing dots ===
+Mar 20 08:23:00 web-server.corp.local/10.0.0.100 THOR: Alert: MODULE: Filescan MESSAGE: Known malware found FILE: /var/www/html/uploads/shell.php SCORE: 100 MD5: d41d8cd98f00b204e9800998ecf8427e SHA256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855 SIZE: 1337 REASON_1: WEBSHELL_PHP_Generic / Detects generic PHP webshell SUBSCORE_1: 100 SIGTYPE_1: internal RULENAME_1: WEBSHELL_PHP_Generic AUTHOR_1: Florian Roth TAGS_1: WEBSHELL, T1505.003
+
+# === Thunderstorm mode ===
+Mar 26 13:40:50 colossus THOR: Notice: MODULE: HTTPServer MESSAGE: Notable file found FILE: /tmp/thunderstorm.nP8qp8 SCORE: 40 MD5: 775b3542709bd235df1b03789bfc2fd2 SHA1: 8bd3f8ba5d4987a1fe7c9c8e564cfb1ef61bc7bf SHA256: 643388b537114eb20935f1ed8b0619d454ef221395cfb434f11fd12a820a022a SIZE: 67688 TYPE: ELF FIRSTBYTES: 7f454c460201010000000000000000000300b700 / ELF REASON_1: SUSP_ELF_Binary_Temp_Folder_May19_1 / Detects a Linux ELF binary in a temporary filesystem SUBSCORE_1: 40 SIGTYPE_1: internal AUTHOR_1: Florian Roth TAGS_1: EXTVAR, FILE, LINUX, METARULE, SUSP

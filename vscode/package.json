@@ -1,0 +1,52 @@
+{
+  "name": "thor-log",
+  "displayName": "THOR Log",
+  "description": "Syntax highlighting for THOR APT Scanner log files",
+  "version": "1.0.0",
+  "publisher": "NextronSystems",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/NextronSystems/thor-syntax-highlighting"
+  },
+  "engines": {
+    "vscode": "^1.75.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "keywords": [
+    "thor",
+    "apt",
+    "scanner",
+    "forensics",
+    "log",
+    "nextron",
+    "yara",
+    "sigma",
+    "dfir"
+  ],
+  "contributes": {
+    "languages": [
+      {
+        "id": "thorlog",
+        "aliases": [
+          "THOR Log",
+          "thorlog"
+        ],
+        "extensions": [
+          ".thor.log",
+          ".thor.txt"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "thorlog",
+        "scopeName": "text.log.thor",
+        "path": "./syntaxes/thorlog.tmLanguage.json"
+      }
+    ]
+  }
+}

@@ -1,0 +1,150 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "THOR Log",
+  "scopeName": "text.log.thor",
+  "patterns": [
+    {
+      "include": "#comment"
+    },
+    {
+      "include": "#logline"
+    }
+  ],
+  "repository": {
+    "comment": {
+      "match": "^\\s*#.*$",
+      "name": "comment.line.number-sign.thor"
+    },
+    "logline": {
+      "match": "^((?:[A-Z][a-z]{2}\\s+\\d{1,2}\\s+\\d{2}:\\d{2}:\\d{2}|\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(?:\\.\\d+)?(?:Z|[+-]\\d{2}:\\d{2})?))\\s+(\\S+?)(?:(/)([\\d.]+))?\\s+(THOR(?:_UTIL)?)(:\\s*)(Alert|Error|Warning|Notice|Info)(:\\s*)(.*)",
+      "captures": {
+        "1": {
+          "name": "constant.numeric.timestamp.thor"
+        },
+        "2": {
+          "name": "entity.name.hostname.thor"
+        },
+        "3": {
+          "name": "punctuation.separator.thor"
+        },
+        "4": {
+          "name": "constant.numeric.ip-address.thor"
+        },
+        "5": {
+          "name": "keyword.other.source.thor"
+        },
+        "6": {
+          "name": "punctuation.separator.thor"
+        },
+        "7": {
+          "patterns": [
+            {
+              "include": "#level"
+            }
+          ]
+        },
+        "8": {
+          "name": "punctuation.separator.thor"
+        },
+        "9": {
+          "patterns": [
+            {
+              "include": "#fields"
+            }
+          ]
+        }
+      }
+    },
+    "level": {
+      "patterns": [
+        {
+          "match": "Alert",
+          "name": "markup.error.alert.thor"
+        },
+        {
+          "match": "Error",
+          "name": "markup.error.thor"
+        },
+        {
+          "match": "Warning",
+          "name": "markup.warning.thor"
+        },
+        {
+          "match": "Notice",
+          "name": "markup.info.notice.thor"
+        },
+        {
+          "match": "Info",
+          "name": "comment.info.thor"
+        }
+      ]
+    },
+    "fields": {
+      "patterns": [
+        {
+          "include": "#field_pair"
+        },
+        {
+          "include": "#hash_sha256"
+        },
+        {
+          "include": "#hash_sha1"
+        },
+        {
+          "include": "#hash_md5"
+        },
+        {
+          "include": "#ip_address"
+        },
+        {
+          "include": "#scan_id"
+        },
+        {
+          "include": "#number"
+        },
+        {
+          "include": "#value"
+        }
+      ]
+    },
+    "field_pair": {
+      "match": "(?<=\\s|^)((?:[A-Z][A-Z0-9]*_)?(?:ACCESSED|ACCESS_COUNT|ACTIVE|ACTIVE_FEATURES|ACTIVE_MODULES|ADDRESS|AFFECTED|ALLOW|APPNAME|APPPATH|APP_INFO|ARCH|ARGUMENTS|AUTHENTICATED_USER_NAME|AUTHOR|AUTH_PACKAGE|AUTORUN_TYPE|BACKGROUND_BYTES_READ|BACKGROUND_BYTES_WRITTEN|BACKGROUND_NUM_READ_OPERATIONS|BACKGROUND_NUM_WRITE_OPERATIONS|BAD_PASSWORD_COUNT|BEACON|BEACON_LENGTH|BEACON_OFFSET|BIRTH_VOLUME_ID|BLOCK_START|BUILD|BUILD_NUMBER|BUILD_SEQUENCE_ID|C2|CALLBACK_INTERVAL|CAPTION|CATEGORY|CERTIFICATE_NAME|CHANGED|CHECKSUM|CHUNK_END|CHUNK_OFFSET|CIPHER_PARAMETERS|CLIENT|CLIENT_NAME|CLIENT_TYPE|COMMAND|COMMAND_LINE|COMMENT|COMPANY|COM_HANDLER|CONNECTIONS|CONNECTION_COUNT|CONTENT|COUNT|CPU_COUNT|CPU_LIMIT|CREATED|DATA|DATE|DATE_ACCESS|DEAD|DELETED|DELETION_TIME|DESC|DESCRIPTION|DIR|DOMAIN|DURATION|ELEMENT|ELEMENT1|ELEMENT2|ELEVATED|ENABLED|END_TIME|ENTRIES|ENTRY|ENTRY_ID|ERROR|ERRORS|EVENT|EVENTCONSUMER|EVENTCONSUMERNAME|EVENTFILTER|EVENTFILTERNAME|EVENTNAME|EVENTTYPE|EVENT_CHANNEL|EVENT_COMPUTER|EVENT_ID|EVENT_LEVEL|EVENT_TIME|EXCLUSION|EXE|EXECUTABLE|EXECUTION_COUNT|EXEC_FLAG|EXISTS|EXPIRES|EXTENSION|EXTRAS|FACE_TIME|FAILURE_COMMAND|FALSEPOSITIVES|FAULT_IN_MODULE|FILE|FILENAME|FILE_SIZE_LIMIT|FILTERTYPE|FIRSTBYTES|FIRST_RUN|FIRST_SUBMISSION|FLAGS|FOREGROUND_BYTES_READ|FOREGROUND_BYTES_WRITTEN|FOREGROUND_NUM_READ_OPERATIONS|FOREGROUND_NUM_WRITE_OPERATIONS|FREE_MEMORY_LIMIT|FULL_NAME|GROUP|GROUPID|GUID|HANDLE|HASH|HDR_MOD|HIVEFILE|HOME|HOOK|HOST|HOSTNAME|IAT_HOOKED|ID|IDLE|IGNORED|IMAGE|IMPHASH|IMPLANTED|INBOUND|INCLUDED_IN_KERNEL|INJECTION_PROCESS|INSERT_DATE|INSTALLED_ON|INTERFACE|INTERNAL_NAME|IN_PROC_MODULES|IN_SYS_MODULE|IN_VMALLOCINFO|IP|IP_ADDRESS|IS_ADMIN|KERNEL_NAME|KERNEL_VERSION|KEY|KEYWORD|KEY_NAME|LANGUAGE|LASTRUN|LAST_ACCESS|LAST_HOTFIX|LAST_LOGON|LAST_RESULT|LAST_RUN|LAST_STOPPED|LAST_SUBMISSION|LAUNCH_STRING|LEGAL_COPYRIGHT|LICENSE|LINE|LINK_TYPE|LIP|LISTEN_PORTS|LOAD_TIME|LOCATION|LOCKED|LOGON_TIME|LOGON_TYPE|LPORT|LSA_SESSION|MATCHED|MD5|MD5_BEFORE|MEMORY|MESSAGE|MFT_FILE_NAME_ACCESSED|MFT_FILE_NAME_CHANGED|MFT_FILE_NAME_CREATED|MFT_FILE_NAME_MODIFIED|MODEL|MODIFIED|MODULE|MUTEX|NAME|NAMES|NESTED|NETBIOS_NAME|NEXTRUN|NO_EXPIRE|NUM_LOGONS|NUM_OPENS|OBJECT_ID|ORIGINAL_FILENAME|ORIGINAL_NAME|OS_BUILD_TIME|OTHER|OTHER_DOMAINS|OWNER|PAIRWISE_SWAPPED|PARAMETERS|PARENT|PARENT_COMMAND|PASSWORD|PASS_AGE|PATCHED|PATH|PERMISSIONS|PE_SIEVE|PID|PINNED|PIPE|PIPENAME|PIPES|PORT|PPID|PREVIOUS_ENTRIES|PRIMARY_KEY|PRIORITY|PRIVILEGES|PROC|PROCESS|PRODUCT|PRODUCT_NAME|PROTOCOL|PROXY|REASON|REASONS_COUNT|REF|REPLACED|REPORTTYPE|RESULT|RIP|ROLE_GUID|ROLE_NAME|RPORT|RULE|RULEDATE|RULENAME|RUN_AS_GROUP|RUN_AS_USER|RUN_LEVEL|SCANID|SCANNER|SCAN_ID|SCHEDULE|SCORE|SERVER|SERVICE_NAME|SERVICE_PACK|SERVICE_TYPE|SESSION|SHA1|SHA256|SHARE_NAME|SHARE_PERMS|SHELL|SIGCLASS|SIGMA_VERSION|SIGNATURE_STATUS|SIGNATURE_VALID|SIGNATURE_VERSION|SIGNED|SIGTYPE|SIZE|SKIPPED|SPAWNTO|STARTED|STARTS|START_TYPE|STATUS|SUBELEMENT1|SUBELEMENT2|SUBFIELD1|SUBFIELD2|SUBFIELD3|SUBFIELD4|SUBFIELD5|SUBFIELD8|SUBMISSIONS|SUBOBJECT|SUBSCORE|SUBSTRUCT|SUSPICIOUS_SECTIONS|SYMBOL|SYSTEM_TYPE|TAG|TAGS|TARGET|TARGET_SIZE|TECHNOLOGY_LEVEL|TENANT_ID|THOR_DIR|THREADS|THREAD_ID|THREAT|THREAT_NAME|TIME|TIMEOUT|TIMESTAMP|TIMEZONE|TITLE|TOTAL_ACCESSES|TREE|TRIGGERS|TYPE|UID|UNEXPANDED|UNIT|UNPACK_SOURCE|UNREACHABLE_FILE|UPTIME|URL|USER|USERID|USERNAME|USER_AGENT|USER_NAME|USER_SID|USN_CHANGE_TIME|VALUE|VALUER|VALUES|VAR|VCPUS|VERDICTS|VERSION|VIRUSTOTAL|VOLUME_ID|XAF_ENCODED|XAF_ENCODING_ANCHOR|XOR_KEY)(?:_\\d+)?)(: )",
+      "captures": {
+        "1": {
+          "name": "entity.name.tag.field-key.thor"
+        },
+        "2": {
+          "name": "punctuation.separator.key-value.thor"
+        }
+      }
+    },
+    "hash_sha256": {
+      "match": "\\b[0-9a-fA-F]{64}\\b",
+      "name": "constant.other.hash.sha256.thor"
+    },
+    "hash_sha1": {
+      "match": "\\b[0-9a-fA-F]{40}\\b",
+      "name": "constant.other.hash.sha1.thor"
+    },
+    "hash_md5": {
+      "match": "\\b[0-9a-fA-F]{32}\\b",
+      "name": "constant.other.hash.md5.thor"
+    },
+    "ip_address": {
+      "match": "\\b\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\b",
+      "name": "constant.numeric.ip-address.thor"
+    },
+    "scan_id": {
+      "match": "\\bS-[a-zA-Z0-9_-]+\\b",
+      "name": "constant.other.scan-id.thor"
+    },
+    "number": {
+      "match": "(?<=: )\\d+(?=\\s|$)",
+      "name": "constant.numeric.thor"
+    },
+    "value": {
+      "match": "\\S+",
+      "name": "string.unquoted.value.thor"
+    }
+  }
+}
