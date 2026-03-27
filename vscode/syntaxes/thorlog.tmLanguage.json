@@ -59,11 +59,11 @@
       "patterns": [
         {
           "match": "Alert",
-          "name": "markup.error.alert.thor"
+          "name": "markup.deleted.alert.thor"
         },
         {
           "match": "Error",
-          "name": "markup.error.thor"
+          "name": "support.type.error.thor"
         },
         {
           "match": "Warning",
@@ -75,7 +75,7 @@
         },
         {
           "match": "Info",
-          "name": "comment.info.thor"
+          "name": "string.info.thor"
         }
       ]
     },

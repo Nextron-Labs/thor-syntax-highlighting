@@ -149,35 +149,35 @@ contexts:
     # Alert — highest severity, red
     - match: '(Alert)(:)\s*'
       captures:
-        1: markup.error.thor support.type.level.alert.thor
+        1: markup.deleted.thor support.type.level.alert.thor
         2: punctuation.separator.thor
       set: fields
 
-    # Error
+    # Error — purple
     - match: '(Error)(:)\s*'
       captures:
-        1: markup.error.thor support.type.level.error.thor
+        1: support.type.thor support.type.level.error.thor
         2: punctuation.separator.thor
       set: fields
 
-    # Warning
+    # Warning — yellow
     - match: '(Warning)(:)\s*'
       captures:
         1: markup.warning.thor support.type.level.warning.thor
         2: punctuation.separator.thor
       set: fields
 
-    # Notice
+    # Notice — blue
     - match: '(Notice)(:)\s*'
       captures:
         1: markup.info.thor support.type.level.notice.thor
         2: punctuation.separator.thor
       set: fields
 
-    # Info
+    # Info — green
     - match: '(Info)(:)\s*'
       captures:
-        1: comment.thor support.type.level.info.thor
+        1: string.thor support.type.level.info.thor
         2: punctuation.separator.thor
       set: fields
 

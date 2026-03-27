@@ -97,13 +97,13 @@
 					<key>match</key>
 					<string>Alert</string>
 					<key>name</key>
-					<string>markup.error.alert.thor</string>
+					<string>markup.deleted.alert.thor</string>
 				</dict>
 				<dict>
 					<key>match</key>
 					<string>Error</string>
 					<key>name</key>
-					<string>markup.error.thor</string>
+					<string>support.type.error.thor</string>
 				</dict>
 				<dict>
 					<key>match</key>
@@ -121,7 +121,7 @@
 					<key>match</key>
 					<string>Info</string>
 					<key>name</key>
-					<string>comment.info.thor</string>
+					<string>string.info.thor</string>
 				</dict>
 			</array>
 		</dict>

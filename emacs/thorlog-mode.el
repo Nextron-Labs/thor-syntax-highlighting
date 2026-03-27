@@ -46,28 +46,38 @@
   :group 'thorlog)
 
 (defface thorlog-level-alert
-  '((t :inherit error :weight bold))
-  "Face for Alert level."
+  '((((class color) (background dark))  :foreground "#f38ba8" :weight bold)
+    (((class color) (background light)) :foreground "#d20f39" :weight bold)
+    (t :inherit error :weight bold))
+  "Face for Alert level (red, bold)."
   :group 'thorlog)
 
 (defface thorlog-level-error
-  '((t :inherit error))
-  "Face for Error level."
+  '((((class color) (background dark))  :foreground "#cba6f7")
+    (((class color) (background light)) :foreground "#8839ef")
+    (t :inherit font-lock-constant-face))
+  "Face for Error level (purple)."
   :group 'thorlog)
 
 (defface thorlog-level-warning
-  '((t :inherit warning))
-  "Face for Warning level."
+  '((((class color) (background dark))  :foreground "#f9e2af")
+    (((class color) (background light)) :foreground "#df8e1d")
+    (t :inherit warning))
+  "Face for Warning level (yellow)."
   :group 'thorlog)
 
 (defface thorlog-level-notice
-  '((t :inherit font-lock-function-name-face))
-  "Face for Notice level."
+  '((((class color) (background dark))  :foreground "#89b4fa")
+    (((class color) (background light)) :foreground "#1e66f5")
+    (t :inherit font-lock-function-name-face))
+  "Face for Notice level (blue)."
   :group 'thorlog)
 
 (defface thorlog-level-info
-  '((t :inherit font-lock-comment-face))
-  "Face for Info level."
+  '((((class color) (background dark))  :foreground "#a6e3a1")
+    (((class color) (background light)) :foreground "#40a02b")
+    (t :inherit font-lock-string-face))
+  "Face for Info level (green)."
   :group 'thorlog)
 
 (defface thorlog-field-key

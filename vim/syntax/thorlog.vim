@@ -55,11 +55,11 @@ syntax match thorComment /^\s*#.*$/
 highlight default link thorTimestamp  Number
 highlight default link thorHost       Identifier
 highlight default link thorSource     Keyword
-highlight default link thorLevelAlert   ErrorMsg
-highlight default link thorLevelError   ErrorMsg
-highlight default link thorLevelWarning WarningMsg
-highlight default link thorLevelNotice  Function
-highlight default link thorLevelInfo    Comment
+highlight default thorLevelAlert   ctermfg=Red    guifg=#f38ba8 cterm=bold gui=bold
+highlight default thorLevelError   ctermfg=Magenta guifg=#cba6f7
+highlight default thorLevelWarning ctermfg=Yellow  guifg=#f9e2af
+highlight default thorLevelNotice  ctermfg=Blue    guifg=#89b4fa
+highlight default thorLevelInfo    ctermfg=Green   guifg=#a6e3a1
 highlight default link thorFieldKey   Type
 highlight default link thorHashSHA256 Special
 highlight default link thorHashSHA1   Special
