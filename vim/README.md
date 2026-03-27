@@ -9,14 +9,14 @@ Syntax highlighting for [THOR APT Scanner](https://www.nextron-systems.com/thor/
 #### vim-plug
 
 ```vim
-Plug 'NextronSystems/thor-syntax-highlighting', { 'rtp': 'vim' }
+Plug 'Nextron-Labs/thor-syntax-highlighting', { 'rtp': 'vim' }
 ```
 
 #### lazy.nvim (Neovim)
 
 ```lua
 {
-  "NextronSystems/thor-syntax-highlighting",
+  "Nextron-Labs/thor-syntax-highlighting",
   config = function()
     vim.opt.runtimepath:append(vim.fn.stdpath("data") .. "/lazy/thor-syntax-highlighting/vim")
   end,
@@ -26,7 +26,7 @@ Plug 'NextronSystems/thor-syntax-highlighting', { 'rtp': 'vim' }
 #### Vundle
 
 ```vim
-Plugin 'NextronSystems/thor-syntax-highlighting', { 'rtp': 'vim' }
+Plugin 'Nextron-Labs/thor-syntax-highlighting', { 'rtp': 'vim' }
 ```
 
 ### Manual Installation

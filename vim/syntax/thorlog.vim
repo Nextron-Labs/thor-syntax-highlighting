@@ -1,6 +1,6 @@
 " THOR APT Scanner - Log File Syntax Highlighting for Vim
 " Maintainer: Nextron Systems GmbH
-" URL: https://github.com/NextronSystems/thor-syntax-highlighting
+" URL: https://github.com/Nextron-Labs/thor-syntax-highlighting
 " License: MIT
 
 if exists("b:current_syntax")

@@ -1,7 +1,7 @@
 %YAML 1.2
 ---
 # THOR APT Scanner - Text Log Syntax Highlighting for Sublime Text
-# https://github.com/NextronSystems/thor-syntax-highlighting
+# https://github.com/Nextron-Labs/thor-syntax-highlighting
 #
 # Field names derived from https://github.com/NextronSystems/jsonlog
 name: THOR Log
@@ -14,11 +14,12 @@ file_extensions:
 
 # Match filenames like: hostname_thor_2024-03-20_0800.txt
 # Users can also associate manually via View > Syntax > THOR Log
+# First line match: look for THOR/THOR_UTIL with log level anywhere in first line
 first_line_match: |-
   (?x)
-  # Syslog-style THOR line
-  ^(?:\w{3}\s+\d{1,2}\s+\d{2}:\d{2}:\d{2}|\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2})
-  \s+\S+\s+THOR(?:_UTIL)?:\s+(?:Alert|Warning|Notice|Info|Error):
+  # THOR log line pattern (with or without leading timestamp)
+  (?:^|\s)
+  THOR(?:_UTIL)?:\s+(?:Alert|Error|Warning|Notice|Info):
 
 variables:
   # Base field names from THOR's jsonlog textlog tags (uppercased).

@@ -12,7 +12,7 @@ Syntax highlighting for [THOR APT Scanner](https://www.nextron-systems.com/thor/
 
 ```elisp
 (use-package thorlog-mode
-  :straight (:host github :repo "NextronSystems/thor-syntax-highlighting"
+  :straight (:host github :repo "Nextron-Labs/thor-syntax-highlighting"
              :files ("emacs/thorlog-mode.el")))
 ```
 
@@ -21,7 +21,7 @@ Syntax highlighting for [THOR APT Scanner](https://www.nextron-systems.com/thor/
 ```elisp
 (use-package thorlog-mode
   :quelpa (thorlog-mode :fetcher github
-           :repo "NextronSystems/thor-syntax-highlighting"
+           :repo "Nextron-Labs/thor-syntax-highlighting"
            :files ("emacs/thorlog-mode.el")))
 ```
 
@@ -31,7 +31,7 @@ Add to `packages.el`:
 
 ```elisp
 (package! thorlog-mode
-  :recipe (:host github :repo "NextronSystems/thor-syntax-highlighting"
+  :recipe (:host github :repo "Nextron-Labs/thor-syntax-highlighting"
            :files ("emacs/thorlog-mode.el")))
 ```
 

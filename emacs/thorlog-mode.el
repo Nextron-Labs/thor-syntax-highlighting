@@ -1,7 +1,7 @@
 ;;; thorlog-mode.el --- Major mode for THOR APT Scanner text logs -*- lexical-binding: t; -*-
 
 ;; Author: Nextron Systems GmbH
-;; URL: https://github.com/NextronSystems/thor-syntax-highlighting
+;; URL: https://github.com/Nextron-Labs/thor-syntax-highlighting
 ;; Version: 1.0.0
 ;; Keywords: languages, logs, security
 ;; Package-Requires: ((emacs "24.3"))
@@ -249,10 +249,10 @@ field keys, hashes, IP addresses, scan IDs, and numeric values.
 ;;;###autoload
 (add-to-list 'auto-mode-alist '("\\.thor\\.\\(?:log\\|txt\\)\\'" . thorlog-mode))
 
-;; Auto-detect by first line content
+;; Auto-detect by first line content (also matches files with leading comments)
 ;;;###autoload
 (add-to-list 'magic-mode-alist
-             '("\\`\\(?:[A-Z][a-z]\\{2\\} +[0-9]\\{1,2\\} +[0-9:]\\{8\\}\\|[0-9]\\{4\\}-[0-9]\\{2\\}-[0-9]\\{2\\}T\\).* THOR\\(?:_UTIL\\)?:" . thorlog-mode))
+             '("THOR\\(?:_UTIL\\)?:[ \t]+\\(?:Alert\\|Error\\|Warning\\|Notice\\|Info\\):" . thorlog-mode))
 
 (provide 'thorlog-mode)
 

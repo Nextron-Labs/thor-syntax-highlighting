@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>$schema</key>
+	<string>https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json</string>
 	<key>name</key>
 	<string>THOR Log</string>
 	<key>scopeName</key>
@@ -231,6 +233,8 @@
 			<string>string.unquoted.value.thor</string>
 		</dict>
 	</dict>
+	<key>firstLineMatch</key>
+	<string>THOR(?:_UTIL)?:\s+(?:Alert|Error|Warning|Notice|Info):</string>
 	<key>fileTypes</key>
 	<array>
 		<string>thor.log</string>
@@ -238,7 +242,5 @@
 	</array>
 	<key>uuid</key>
 	<string>c4e5f6a7-8b9c-0d1e-2f3a-4b5c6d7e8f9a</string>
-	<key>firstLineMatch</key>
-	<string>^(?:\w{3}\s+\d{1,2}\s+\d{2}:\d{2}:\d{2}|\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2})\s+\S+\s+THOR(?:_UTIL)?:\s+(?:Alert|Warning|Notice|Info|Error):</string>
 </dict>
 </plist>

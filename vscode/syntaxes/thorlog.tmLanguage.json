@@ -146,5 +146,6 @@
       "match": "\\S+",
       "name": "string.unquoted.value.thor"
     }
-  }
+  },
+  "firstLineMatch": "THOR(?:_UTIL)?:\\s+(?:Alert|Error|Warning|Notice|Info):"
 }
