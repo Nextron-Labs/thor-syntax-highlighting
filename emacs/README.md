@@ -16,6 +16,12 @@ Syntax highlighting for [THOR APT Scanner](https://www.nextron-systems.com/thor/
              :files ("emacs/thorlog-mode.el")))
 ```
 
+To update after changes:
+```elisp
+(straight-pull-package 'thorlog-mode)
+(straight-use-package 'thorlog-mode)
+```
+
 ### Using use-package + Quelpa
 
 ```elisp
@@ -23,6 +29,11 @@ Syntax highlighting for [THOR APT Scanner](https://www.nextron-systems.com/thor/
   :quelpa (thorlog-mode :fetcher github
            :repo "Nextron-Labs/thor-syntax-highlighting"
            :files ("emacs/thorlog-mode.el")))
+```
+
+To update after changes:
+```elisp
+(quelpa-upgrade 'thorlog-mode)
 ```
 
 ### Using Doom Emacs
@@ -33,6 +44,11 @@ Add to `packages.el`:
 (package! thorlog-mode
   :recipe (:host github :repo "Nextron-Labs/thor-syntax-highlighting"
            :files ("emacs/thorlog-mode.el")))
+```
+
+To update after changes:
+```elisp
+(doom refresh)
 ```
 
 ### Manual Installation

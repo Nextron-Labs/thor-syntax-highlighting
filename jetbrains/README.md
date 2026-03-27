@@ -18,6 +18,10 @@ JetBrains IDEs natively support TextMate bundles:
 
 The syntax is immediately available for `.thor.log` and `.thor.txt` files.
 
+To update after changes:
+- Remove the bundle from **Settings** → **Editor** → **TextMate Bundles**
+- Re-add it from the updated repository
+
 ### Manual File Copy
 
 1. Locate your IDE's configuration directory:

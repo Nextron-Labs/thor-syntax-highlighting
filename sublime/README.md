@@ -15,6 +15,10 @@ Syntax highlighting for [THOR APT Scanner](https://www.nextron-systems.com/thor/
 3. Create a folder called `THOR Log` inside the `Packages` directory
 4. Copy `THOR Log.sublime-syntax` into that folder
 
+To update after changes:
+- Simply replace the `THOR Log.sublime-syntax` file in your `Packages/THOR Log/` directory
+- Sublime Text will reload the syntax automatically
+
 ### File Association
 
 The syntax auto-detects files with the extensions `.thor.log` and `.thor.txt`, and files whose first line matches the THOR log format.

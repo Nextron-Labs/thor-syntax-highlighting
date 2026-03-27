@@ -23,6 +23,11 @@ Syntax highlighting for [THOR APT Scanner](https://www.nextron-systems.com/thor/
    code --install-extension thor-log-1.0.0.vsix
    ```
 
+To update after changes, rebuild and reinstall:
+```bash
+cd vscode && npx @vscode/vsce package && code --install-extension thor-log-1.0.0.vsix
+```
+
 ### Manual Installation (Copy)
 
 1. Copy the entire `vscode/` directory to your VS Code extensions folder:
