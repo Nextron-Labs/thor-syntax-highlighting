@@ -2,6 +2,12 @@
 
 Syntax highlighting for [THOR APT Scanner](https://www.nextron-systems.com/thor/) text log files.
 
+## Preview
+
+| Dark Theme | Light Theme |
+|------------|-------------|
+| ![Dark Theme Preview](../samples/vim-preview.png) | ![Light Theme Preview](../samples/vim-preview-light.png) |
+
 ## Installation
 
 ### Using a Plugin Manager (Recommended)
