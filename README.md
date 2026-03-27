@@ -2,8 +2,6 @@
 
 Syntax highlighting for [THOR APT Scanner](https://www.nextron-systems.com/thor/) text log files across multiple editors.
 
-![THOR](https://www.nextron-systems.com/wp-content/uploads/2021/10/thor-logo.png)
-
 ## Supported Editors
 
 | Editor | Directory | Status |
