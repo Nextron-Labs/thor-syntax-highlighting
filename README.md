@@ -16,6 +16,18 @@ Syntax highlighting for [THOR APT Scanner](https://www.nextron-systems.com/thor/
 
 Each editor directory contains its own README with installation instructions.
 
+## Preview
+
+### Dark Theme
+
+![THOR Log — Dark Theme](samples/preview-dark.png)
+
+### Light Theme
+
+![THOR Log — Light Theme](samples/preview-light.png)
+
+*Colors adapt to your editor's color scheme. The above are representative examples.*
+
 ## What Is This?
 
 THOR produces text log files during scans. These logs follow a structured format with syslog-style headers and key-value fields:
