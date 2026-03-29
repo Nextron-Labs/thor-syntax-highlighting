@@ -44,7 +44,7 @@ syntax match thorLevelInfo    /\<Info:/
 " Matches: "ion.local/192.168.178.175" or "PROMETHEUS/10.0.2.15" or "WORKSTATION"
 " Only in the header portion (after timestamp, before THOR:)
 syntax match thorHostIP /\/\d\{1,3}\.\d\{1,3}\.\d\{1,3}\.\d\{1,3}\ze\s\+THOR\(_UTIL\)\?:/
-syntax match thorHost /\d\{2}:\d\{2}:\d\{2}\s\+\zs[A-Za-z0-9][A-Za-z0-9._-]*\ze[\/\s]\+.*THOR\(_UTIL\)\?:/
+syntax match thorHost /\(\d\{2}:\d\{2}:\d\{2}\s\+\)\@<=[A-Za-z0-9][A-Za-z0-9._-]*\ze[\/ ].*THOR\(_UTIL\)\?:/
 
 " === IP addresses (standalone, not part of hostname) ===
 syntax match thorIPAddress /\<\d\{1,3}\.\d\{1,3}\.\d\{1,3}\.\d\{1,3}\>/
