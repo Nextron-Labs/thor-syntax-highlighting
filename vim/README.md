@@ -14,37 +14,38 @@ Syntax highlighting for [THOR APT Scanner](https://www.nextron-systems.com/thor/
 
 #### vim-plug
 
+Add this line to your `~/.vimrc` (between `call plug#begin()` and `call plug#end()`):
+
 ```vim
 Plug 'Nextron-Labs/thor-syntax-highlighting'
 ```
 
+Then restart Vim and run `:PlugInstall`.
+
 To update after changes:
 ```vim
-:PlugUpgrade    " Update vim-plug itself
-:PlugUpdate      " Update all plugins including this one
+:PlugUpdate
 ```
 
 #### lazy.nvim (Neovim)
+
+Add this to your plugin list in `~/.config/nvim/lua/plugins.lua` (or equivalent):
 
 ```lua
 { "Nextron-Labs/thor-syntax-highlighting" }
 ```
 
-To update after changes:
-```vim
-:Lazy sync
-```
+Then restart Neovim or run `:Lazy sync`.
 
 #### Vundle
+
+Add this line to your `~/.vimrc` (between `call vundle#begin()` and `call vundle#end()`):
 
 ```vim
 Plugin 'Nextron-Labs/thor-syntax-highlighting'
 ```
 
-To update after changes:
-```vim
-:PluginInstall!    " Force reinstall/update
-```
+Then restart Vim and run `:PluginInstall`.
 
 ### Manual Installation
 
@@ -67,7 +68,8 @@ cp vim/ftdetect/thorlog.vim ~/.config/nvim/ftdetect/
 The filetype detection automatically activates for:
 
 - Files with extensions `.thor.log` or `.thor.txt`
-- Any `.log` or `.txt` file whose first few lines contain `THOR:` or `THOR_UTIL:` followed by a log level
+- Files matching `*_thor_*` or `*_THOR_*` patterns (e.g. `ion.local_thor_2026-01-21_1914.txt`)
+- Any `.log` or `.txt` file whose first 20 lines contain `THOR:` or `THOR_UTIL:` followed by a log level
 
 To force the syntax on any file:
 
