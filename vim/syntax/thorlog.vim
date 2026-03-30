@@ -8,7 +8,7 @@ if exists("b:current_syntax")
 endif
 
 syntax case match
-syntax sync fromstart
+syntax sync minlines=1
 
 " === Comments ===
 syntax match thorComment /^\s*#.*$/
@@ -43,11 +43,18 @@ syntax match thorLevelInfo    /\<Info:/
 " === Hostname/IP — positional match between timestamp and THOR: ===
 " Matches: "ion.local/192.168.178.175" or "PROMETHEUS/10.0.2.15" or "WORKSTATION"
 " Only in the header portion (after timestamp, before THOR:)
-syntax match thorHostIP /\/\d\{1,3}\.\d\{1,3}\.\d\{1,3}\.\d\{1,3}\ze\s\+THOR\(_UTIL\)\?:/
-syntax match thorHost /\(\d\{2}:\d\{2}:\d\{2}\s\+\)\@<=[A-Za-z0-9][A-Za-z0-9._-]*\ze[\/ ].*THOR\(_UTIL\)\?:/
+" Patterns are bounded to avoid E363 on long THOR log lines
+syntax match thorHostIP /\/\d\{1,3}\.\d\{1,3}\.\d\{1,3}\.\d\{1,3}\ze\s\+THOR/ contained
+syntax match thorHost /\(\d\{2}:\d\{2}:\d\{2}\s\+\)\@15<=[A-Za-z0-9][A-Za-z0-9._-]*\ze[/ ]\S\{-}THOR/ contained
+" Header region: anchored to line start, limited to first 120 chars
+syntax match thorHeader /^.\{1,120}THOR\(_UTIL\)\?:/ contains=thorTimestamp,thorHost,thorHostIP,thorSource,thorLevelAlert,thorLevelError,thorLevelWarning,thorLevelNotice,thorLevelInfo
 
 " === IP addresses (standalone, not part of hostname) ===
 syntax match thorIPAddress /\<\d\{1,3}\.\d\{1,3}\.\d\{1,3}\.\d\{1,3}\>/
+
+" === Scores (SCORE: with severity-based coloring) ===
+" Scores >= 100 are critical (alert-level) — match before general numbers
+syntax match thorScoreCritical /SCORE:\s\+\zs\d\{3,}\ze\s/
 
 " === Numbers (only after field key "KEY: 123") ===
 syntax match thorNumber /:\s\+\zs\d\+\ze\s/
@@ -68,6 +75,7 @@ highlight default link thorHashSHA1   Special
 highlight default link thorHashSHA256 Special
 highlight default link thorIPAddress  Constant
 highlight default link thorScanID     Constant
+highlight default link thorScoreCritical thorLevelAlert
 highlight default link thorNumber     Number
 highlight default link thorComment    Comment
 
